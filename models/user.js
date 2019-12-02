@@ -7,6 +7,11 @@ var schema = new Schema({
   name: {type: String, required: true, trim: true},
   email: {type: String, required: true, index: true, unique: true, trim: true},
   password: {type: String},
+  userType: {
+    type: String,
+    enum : ['user', 'guide', 'admin'],
+    default: 'user'
+  },
   facebook: {id: String, token: String, photo: String},
   createdAt: {type: Date, default: Date.now}
 }, {
