@@ -1,0 +1,35 @@
+.answer.card(id= answer.id)
+
+  
+  .col-m.text-left
+    .numbers.like-badge
+      .number
+        span.number.num-likes= answer.numLikes
+      .button
+        a.like.answer-like-btn(href='#', data-id=answer.id)
+          i.fa.fa-thumbs-up
+          | 
+          | Like
+
+  .card-body
+    .content= answer.content
+
+  .row.card-body
+  .col-xm.text-left
+    .numbers.dislike-badge
+      .number
+        span.number.num-dislikes= answer.numDisLikes
+      .button
+        a.dislike.answer-dislike-btn(href='#', data-id=answer.id)
+          i.fa.fa-thumbs-down
+          | 
+          | DisLike
+    
+  .row.card-body
+    .col-sm
+    .col-sm.text-right
+      .author
+        | Commented on #{moment(answer.createdAt).format('YYYY-MM-DD')}
+        if answer.author
+          | 
+          | by #[a(href=`/users/${answer.author.id}`)= answer.author.name]
