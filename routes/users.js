@@ -41,6 +41,14 @@ function validateForm(form, options) {
   return null;
 }
 
+router.get('/profile', function(req, res, next) {
+  //here it is
+  var user = req.user;
+
+  //you probably also want to pass this to your view
+  res.render('profile', { title: 'profile', user: user });
+});
+
 /* GET users listing. */
 router.get('/', needAuth, catchErrors(async (req, res, next) => {
   const users = await User.find({});

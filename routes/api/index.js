@@ -17,6 +17,8 @@ router.use(catchErrors(async (req, res, next) => {
 
 router.use('/questions', require('./questions'));
 
+router.use('/users', require('./users'));
+
 // Like for Question
 router.post('/questions/:id/like', catchErrors(async (req, res, next) => {
   const question = await Question.findById(req.params.id);
