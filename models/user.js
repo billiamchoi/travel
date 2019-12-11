@@ -7,7 +7,7 @@ var schema = new Schema({
   name: {type: String, required: true, trim: true},
   email: {type: String, required: true, index: true, unique: true, trim: true},
   password: {type: String},
-  userType: {
+  usertype: {
     type: String,
     enum : ['user', 'guide', 'admin'],
     default: 'user'

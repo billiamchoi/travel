@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
 const catchErrors = require('../lib/async-error');
+const fetch = require("node-fetch");
 
 function needAuth(req, res, next) {
   if (req.isAuthenticated()) {
@@ -44,7 +45,7 @@ function validateForm(form, options) {
 router.get('/profile', function(req, res, next) {
   //here it is
   var user = req.user;
-
+  
   //you probably also want to pass this to your view
   res.render('profile', { title: 'profile', user: user });
 });
@@ -52,7 +53,13 @@ router.get('/profile', function(req, res, next) {
 /* GET users listing. */
 router.get('/', needAuth, catchErrors(async (req, res, next) => {
   const users = await User.find({});
-  res.render('users/index', {users: users});
+  var cur_user = req.user;
+   
+  
+
+  
+  res.render('users/index', {users: users, current: cur_user});
+  res.send(exam);
 }));
 
 router.get('/new', (req, res, next) => {
