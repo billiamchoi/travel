@@ -2,7 +2,6 @@ const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
 const catchErrors = require('../lib/async-error');
-const fetch = require("node-fetch");
 
 function needAuth(req, res, next) {
   if (req.isAuthenticated()) {
@@ -59,7 +58,6 @@ router.get('/', needAuth, catchErrors(async (req, res, next) => {
 
   
   res.render('users/index', {users: users, current: cur_user});
-  res.send(exam);
 }));
 
 router.get('/new', (req, res, next) => {

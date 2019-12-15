@@ -14,7 +14,7 @@ var passportSocketIo = require('passport.socketio');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var questions = require('./routes/questions');
-
+var travelings = require('./routes/travelings');
 var passportConfig = require('./lib/passport-config');
 
 module.exports = (app, io) => {
@@ -127,6 +127,7 @@ module.exports = (app, io) => {
   app.use('/', index);
   app.use('/users', users);
   app.use('/questions', questions(io)); // socket.io를 인자로 주기 위해 function으로 변경
+  app.use('/travelings', travelings);
   require('./routes/auth')(app, passport);
   app.use('/api', require('./routes/api'));
 
