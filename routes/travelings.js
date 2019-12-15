@@ -15,13 +15,10 @@ function needAuth(req, res, next) {
 
 /* GET users listing. */
 router.get('/', needAuth, catchErrors(async (req, res, next) => {
-  // const Traveling = await Traveling.find({});
-  // var cur_user = req.user;
+  const travelings = await Traveling.find({});
+  var cur_user = req.user;
    
-  
-
-  
-  res.render('travelings/index');
+  res.render('travelings/index', {travelings: travelings, current: cur_user});
 }));
 
 router.get('/new', (req, res, next) => {

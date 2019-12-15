@@ -7,9 +7,20 @@ block content
       thead
         tr
           th Name
-          th Email
-          th Usertype
+          th Location
+          th Price
+          th Course
           th Created At
           th
+      tbody
+        each traveling in travelings
+          tr
+            td
+              a(href=`/travelings/${traveling._id}`)= traveling.name
+            td= traveling.location
+            td= traveling.price
+            td= traveling.course
+            td= moment(traveling.createdAt).format('YYYY-MM-DD HH:mm:ss')    
+
     a.btn.btn-primary(href='/travelings/new') #[i.fa.fa-plus] Register a new traveling
 
