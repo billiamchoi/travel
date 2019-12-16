@@ -33,11 +33,50 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     price: req.body.price,
     description: req.body.description,
     course: req.body.course,
-    author: user._id 
+    author: user._id,
+    guide: user.name
   });
   await traveling.save();
   req.flash('success', 'Successfully posted');
   res.redirect('/travelings');
 }));
+
+router.get('/:id', catchErrors(async (req, res, next) => {
+  const traveling = await Traveling.findById(req.params.id);
+  res.render('travelings/show', {traveling: traveling});
+}));
+
+router.delete('/:id', needAuth, catchErrors(async (req, res, next) => {
+  const traveling = await Traveling.findOneAndRemove({_id: req.params.id});
+  req.flash('success', 'Deleted Successfully.');
+  res.redirect('/travelings');
+}));
+
+router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
+  const traveling = await Traveling.findById(req.params.id);
+  res.render('travelings/edit', {traveling: traveling});
+}));
+
+router.put('/:id', needAuth, catchErrors(async (req, res, next) => {
+  
+  const traveling = await Traveling.findById({_id: req.params.id});
+  if (!traveling) {
+    req.flash('danger', 'Not exist traveling.');
+    return res.redirect('back');
+  }
+
+  traveling.name = req.body.name;
+  traveling.location = req.body.location;
+  traveling.price = req.body.price;
+  traveling.description = req.body.description;
+  traveling.course = req.body.course;
+
+
+  await traveling.save();
+  req.flash('success', 'Updated successfully.');
+  res.redirect('/travelings');
+}));
+
+
 
 module.exports = router;

@@ -9,18 +9,26 @@ block content
           th Name
           th Location
           th Price
-          th Course
+          th Guide's Name
           th Created At
           th
       tbody
         each traveling in travelings
           tr
             td
-              a(href=`/travelings/${traveling._id}`)= traveling.name
+              a(href=`/travelings/${traveling.id}`)= traveling.name
             td= traveling.location
             td= traveling.price
-            td= traveling.course
+            td= traveling.guide
             td= moment(traveling.createdAt).format('YYYY-MM-DD HH:mm:ss')    
+            if current.usertype == "guide"
+              td
+                  a.btn.btn-sm.btn-outline-secondary(href=`/travelings/${traveling._id}/edit`) 
+                    | #[i.fa.fa-pencil] Edit
+                  | 
+                  a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/travelings/${traveling._id}?_method=DELETE`)
+                    | #[i.fa.fa-trash] Delete
+    if current.usertype == "guide"                
+      a.btn.btn-primary(href='/travelings/new') #[i.fa.fa-plus] Register a new traveling
 
-    a.btn.btn-primary(href='/travelings/new') #[i.fa.fa-plus] Register a new traveling
 

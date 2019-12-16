@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title= traveling.name
+          
+    .question.show
+      .location= "여행지 이름: " + traveling.location
+      .guide= "가이드: " + traveling.guide 
+      .prices= "1 인당 가격: " + traveling.price +"원"
+      .course= "여행 코스: " + traveling.course
+      .description= "상세 내용: " + traveling.description
+
+   
+      
+     
+
+    //- hr
+    //- p
+    //-   a.btn.btn-outline-secondary(href='/users/') List
+    //-   | 
+    //-   a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) Edit
+    //-   | 
+    //-   a.btn.btn-outline-danger.need-confirm-btn(href=`/users/${user._id}?_method=DELETE`) Delete
