@@ -1,12 +1,6 @@
 .form-group
   label(for="title") Title
-  input.form-control(type="text", name="title", placeholder="Write down the name of your contest", value=question.title)
+  input.form-control(type="text", name="title", placeholder="Write down the title", value=question.title)
 .form-group
   label(for="question") Content
   textarea.form-control(name="content", rows="5")= question.content
-.form-group
-  label(for="reg_date") reg_date
-  input.form-control(type="text", name="reg_date", placeholder="reg_date of your contest", value=question.reg_date)
-.form-group
-  label(for="name") name
-  input.form-control(type="text", name="name", placeholder="name of Host", value=question.reg_date)

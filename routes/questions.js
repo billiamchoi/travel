@@ -66,9 +66,6 @@ module.exports = io => {
     }
     question.title = req.body.title;
     question.content = req.body.content;
-    question.reg_date = req.body.reg_date;
-    question.name = req.body.name;
-    question.subject = req.body.subject;
 
     await question.save();
     req.flash('success', 'Successfully updated');
@@ -86,8 +83,6 @@ module.exports = io => {
     var question = new Question({
       title: req.body.title,
       content: req.body.content,
-      reg_date: req.body.reg_date,
-      name: req.body.name,
       author: user._id 
     });
     await question.save();

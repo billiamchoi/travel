@@ -9,12 +9,12 @@ block content
       input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
 
     h1.main-title 
-      | Contest
+      | Reviews
       if questions.total > 0
-        .small Total #{questions.total} Contest(s)
+        .small Total #{questions.total} Review(s)
 
     if questions.total <= 0 
-      .alert.alert-info No contests available yet
+      .alert.alert-info No reviews available yet
     else
       .questions
         each question in questions.docs
@@ -25,4 +25,4 @@ block content
       +paginate(questions, '/questions', query)
 
     hr
-    a.btn.btn-primary(href='/questions/new') Upload Contest
+    a.btn.btn-primary(href='/questions/new') Upload Review

@@ -5,15 +5,8 @@ block content
     h1.main-title= question.title
 
     .question.show
-      .name= "이름: " + question.name
-      //- .field="분야: " + question.field
-      //- .subject="응시대상: " + question.subject
-      .reg_date="접수 기간: " + question.reg_date
-      //- .phone="연락처: " + question.phone
-      //- .manager="매니저: " + question.manager
-      //- .ref="참고: " + question.ref
-      include _question
-
+      .content= question.content
+  
       .buttons
         if currentUser
           button.btn.btn-primary.question-like-btn(data-id=question.id) 

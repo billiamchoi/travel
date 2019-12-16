@@ -6,8 +6,6 @@ var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   title: {type: String, trim: true, required: true},
   content: {type: String, trim: true, required: true},
-  reg_date: {type: String, trim: true, required: true},
-  name: {type: String, trim: true, required: true},
   numLikes: {type: Number, default: 0},
   numDisLikes: {type: Number, default: 0},
   numAnswers: {type: Number, default: 0},

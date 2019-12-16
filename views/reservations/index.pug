@@ -1,6 +1,8 @@
 extends ../layout
 
 block content
+  
+
   .container
     if current.usertype == "user"
       h1.main-title My Reservations
@@ -22,6 +24,9 @@ block content
               td
                   a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/reservations/${my_reservation._id}?_method=DELETE`)
                     | #[i.fa.fa-trash] Delete
+      
+      if my_reservations.length == 0 
+            .alert.alert-info No reservations available yet
     else 
       .container
         h1.main-title All Reservations
@@ -29,6 +34,7 @@ block content
           thead
             tr
               th 상품명
+              th 예약인
               th 총 인원
               th 총 금액
               th 예약 일자
@@ -37,6 +43,7 @@ block content
             each reservation in reservations
               tr
                 td= reservation.name
+                td= reservation.person_name
                 td= reservation.number_of_people
                 td= reservation.total
                 td= moment(reservation.date).format('YYYY-MM-DD')  

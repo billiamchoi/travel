@@ -30,7 +30,8 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     date: req.body.date,
     number_of_people: req.body.number_of_people,
     total: req.body.total,
-    author: user._id
+    author: user._id,
+    person_name: user.name
 
   });
   await reservation.save();
