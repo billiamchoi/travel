@@ -32,7 +32,7 @@ block content
             td
               select(class='unit-price') 
                 option !{traveling.price}  
-                option #{i}         
+                //- option #{i}         
             td 
               input(class='qty')
                 
@@ -52,11 +52,10 @@ block content
       input.form-control(type='date', id='date', name='date', placeholder='date')
       .form-group
           label(for='number_of_people') Number of People
-          span(id="number_of_people")
-            input.form-control(type='text', id='number_of_people', name='number_of_people' )     
+            input.form-control(type='text', id='number_of_people', name='number_of_people', placeholder= 'number_of_people', readonly )     
       .form-group
         label(for='total') Total Price 
-          input.form-control(type='text', id='total', name='total', placeholder='Total Price')    
+          input.form-control(type='text', id='total', name='total', placeholder='Total Price', readonly)    
       button.btn.btn-primary(type='submit') reservation
       |   
       |   

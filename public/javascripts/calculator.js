@@ -10,17 +10,24 @@ function recalculate() {
     console.log(unitPrice)
     var qty = parseInt($el.find(".qty").val(), 10);
     console.log(qty)
-    if (true ) {
-      var price =  qty * unitPrice;
-      $el.find(".price").text(price);
-      sum = sum + price;
-      $el.find(".qty").text(qty);
-      tot = qty
+    
+    var price =  qty * unitPrice;
+    if (qty > 5){
+      var price =  (qty * unitPrice)/2;
       
     }
+    
+    $el.find(".price").text(price);
+    sum = sum + price;
+    $el.find(".qty").text(qty);
+    tot = qty
+
+    
   });
   $("#total").text(sum);
   $("#qty").text(tot);
+  $("#number_of_people").val(tot);
+  $("#total").val(sum);
 }
 
 function initCalculator() {
