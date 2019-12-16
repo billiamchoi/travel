@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "10.17.0"
+  },
   "name": "ex01",
   "version": "0.0.0",
   "private": true,
