@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  .container
+    h1.sub-title Reservation Update
+    form(action=`/reservations/${reservation._id}?_method=PUT`, method='POST')
+      .form-group
+        label(for='name') Name
+        input.form-control(type='text', id='name', name='name')
+      .form-group
+      label(for='date') Date
+      input.form-control(type='date', id='date', name='date', placeholder='date')
+      .form-group
+          label(for='number_of_people') Number of People
+          input.form-control(type='text', id='number_of_people', name='number_of_people', placeholder= 'number_of_people' )     
+      .form-group
+        label(for='total') Total Price 
+          input.form-control(type='text', id='total', name='total', placeholder='Total Price')    
+      button.btn.btn-primary(type='submit') Update
+      |   
+      |   
+      a.btn.btn-outline-secondary(href='/reservations') Back

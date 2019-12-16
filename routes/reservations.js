@@ -38,6 +38,40 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
   res.redirect('/reservations');
 }));
 
+router.delete('/:id', needAuth, catchErrors(async (req, res, next) => {
+  const reservation = await Reservation.findOneAndRemove({_id: req.params.id});
+  req.flash('success', 'Deleted Successfully.');
+  res.redirect('/reservations');
+}));
+
+router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
+  const reservation = await Reservation.findById(req.params.id);
+  res.render('reservations/edit', {reservation: reservation});
+}));
+
+
+router.put('/:id', needAuth, catchErrors(async (req, res, next) => {
+  
+  const reservation = await Reservation.findById({_id: req.params.id});
+  if (!reservation) {
+    req.flash('danger', 'Not exist reservation.');
+    return res.redirect('back');
+  }
+  const user = req.user;
+
+  reservation.name = req.body.traveling;
+  reservation.name = req.body.name;
+  reservation.date = req.body.date;
+  reservation.number_of_people = req.body.number_of_people;
+  reservation.total = req.body.total;
+  reservation.author = user._id
+
+
+  await reservation.save();
+  req.flash('success', 'Updated successfully.');
+  res.redirect('/reservations');
+}));
+
 
 
 

@@ -19,14 +19,9 @@ block content
               td= my_reservation.number_of_people
               td= my_reservation.total
               td= moment(my_reservation.date).format('YYYY-MM-DD')   
-    //-           td
-    //-               a.btn.btn-sm.btn-outline-secondary(href=`/travelings/${traveling._id}/edit`) 
-    //-                 | #[i.fa.fa-pencil] Edit
-    //-               | 
-    //-               a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/travelings/${traveling._id}?_method=DELETE`)
-    //-                 | #[i.fa.fa-trash] Delete
-    //- if current.usertype == "guide"                
-    //-   a.btn.btn-primary(href='/travelings/new') #[i.fa.fa-plus] Register a new traveling
+              td
+                  a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/reservations/${my_reservation._id}?_method=DELETE`)
+                    | #[i.fa.fa-trash] Delete
     else 
       .container
         h1.main-title All Reservations
@@ -44,7 +39,13 @@ block content
                 td= reservation.name
                 td= reservation.number_of_people
                 td= reservation.total
-                td= moment(reservation.date).format('YYYY-MM-DD')   
-
+                td= moment(reservation.date).format('YYYY-MM-DD')  
+                 td
+                  a.btn.btn-sm.btn-outline-secondary(href=`/reservations/${reservation._id}/edit`) 
+                    | #[i.fa.fa-pencil] Edit
+                  | 
+                  a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/reservations/${reservation._id}?_method=DELETE`)
+                    | #[i.fa.fa-trash] Delete
+    
 
       
