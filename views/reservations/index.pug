@@ -1,0 +1,50 @@
+extends ../layout
+
+block content
+  .container
+    if current.usertype == "user"
+      h1.main-title My Reservations
+      table.table.table-hover
+        thead
+          tr
+            th 상품명
+            th 총 인원
+            th 총 금액
+            th 예약 일자
+            th
+        tbody
+          each my_reservation in my_reservations
+            tr
+              td= my_reservation.name
+              td= my_reservation.number_of_people
+              td= my_reservation.total
+              td= moment(my_reservation.date).format('YYYY-MM-DD')   
+    //-           td
+    //-               a.btn.btn-sm.btn-outline-secondary(href=`/travelings/${traveling._id}/edit`) 
+    //-                 | #[i.fa.fa-pencil] Edit
+    //-               | 
+    //-               a.btn.btn-sm.need-confirm-btn.btn-outline-danger(href=`/travelings/${traveling._id}?_method=DELETE`)
+    //-                 | #[i.fa.fa-trash] Delete
+    //- if current.usertype == "guide"                
+    //-   a.btn.btn-primary(href='/travelings/new') #[i.fa.fa-plus] Register a new traveling
+    else 
+      .container
+        h1.main-title All Reservations
+        table.table.table-hover
+          thead
+            tr
+              th 상품명
+              th 총 인원
+              th 총 금액
+              th 예약 일자
+              th
+          tbody
+            each reservation in reservations
+              tr
+                td= reservation.name
+                td= reservation.number_of_people
+                td= reservation.total
+                td= moment(reservation.date).format('YYYY-MM-DD')   
+
+
+      

@@ -34,19 +34,10 @@ block content
                 option !{traveling.price}  
                 option #{i}         
             td 
-              select(class='qty')
-                option 1
-                option 2
-                option 3
-                option 4
-                option 5
-                option 6
-                option 7
-                option 8
-                option 9
-                option 10
+              input(class='qty')
+                
             th
-              span(id="sum" class="price")
+              span( class="price")
       input(type="button" value="계산" id="confirm")   
     
   .container
@@ -55,24 +46,17 @@ block content
       .form-group
         input.form-control(type='text', id='traveling', name='traveling', value = traveling.id, readonly, hidden= true)
       .form-group
+        input.form-control(type='text', id='name', name='name', value = traveling.name, readonly, hidden= true)
+      .form-group
       label(for='date') Date
       input.form-control(type='date', id='date', name='date', placeholder='date')
       .form-group
-        label(for='number_of_people') Number of People
-        select.form-control(type='text', id='number_of_people', name='number_of_people', class='qty' )
-          option 1
-          option 2
-          option 3
-          option 4
-          option 5
-          option 6
-          option 7
-          option 8
-          option 9
-          option 10
+          label(for='number_of_people') Number of People
+          span(id="number_of_people")
+            input.form-control(type='text', id='number_of_people', name='number_of_people' )     
       .form-group
-        label(for='total') Total Price
-        input.form-control(type='text', id='total', name='total', placeholder='Total Price')
+        label(for='total') Total Price 
+          input.form-control(type='text', id='total', name='total', placeholder='Total Price')    
       button.btn.btn-primary(type='submit') reservation
       |   
       |   

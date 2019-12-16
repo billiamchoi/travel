@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
   traveling: { type: Schema.Types.ObjectId, ref: 'Traveling' },
-  date: {type: Date},
+  name: {type: String, trim: true, required: true},
   number_of_people: {type: String, trim: true, required: true},
-  total: {type: Number, trim: true, required: true}, 
+  total: {type: Number, trim: true, required: true},
+  date:{type: Date},
   createdAt: {type: Date, default: Date.now}
 }, {
   toJSON: { virtuals: true},

@@ -2,6 +2,7 @@
 
 function recalculate() {
   var sum = 0;
+  var tot = 1;
   $("#tab tbody tr").each(function(idx, row) {
     var $el = $(row);
     console.log($el)
@@ -13,9 +14,13 @@ function recalculate() {
       var price =  qty * unitPrice;
       $el.find(".price").text(price);
       sum = sum + price;
+      $el.find(".qty").text(qty);
+      tot = qty
+      
     }
   });
-  $("#sum").text(sum);
+  $("#total").text(sum);
+  $("#qty").text(tot);
 }
 
 function initCalculator() {
